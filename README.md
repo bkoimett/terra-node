@@ -31,6 +31,10 @@ npm run dev
 - **API**: http://localhost:5000
 - **App**: http://localhost:5173
 
+### Hosting
+
+See **[DEPLOY.md](./DEPLOY.md)** for MongoDB Atlas + Render (recommended). Pitch script: **[PITCH.md](./PITCH.md)**.
+
 ### Project layout
 
 ```
