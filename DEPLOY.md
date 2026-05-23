@@ -1,5 +1,7 @@
 # Hosting TerraNode
 
+> **Deploying on Vercel?** Use **[VERCEL.md](./VERCEL.md)** — full-stack on one `*.vercel.app` URL.
+
 You have **three parts** to host:
 
 | Part | What it is | Recommended service |

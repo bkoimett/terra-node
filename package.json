@@ -2,7 +2,11 @@
   "name": "terranode",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "TerraNode — tokenizing land restoration to offset AI compute footprint",
+  "dependencies": {
+    "serverless-http": "^3.2.0"
+  },
   "scripts": {
     "install:all": "npm install && npm install --prefix server && npm install --prefix client",
     "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
@@ -11,6 +15,7 @@
     "seed": "npm run seed --prefix server",
     "build": "npm run build --prefix client",
     "build:prod": "npm run build --prefix client && echo 'Client built to client/dist'",
+    "build:vercel": "npm run build --prefix client",
     "start:prod": "SERVE_CLIENT=true NODE_ENV=production npm run start --prefix server"
   },
   "devDependencies": {

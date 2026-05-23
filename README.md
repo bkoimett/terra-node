@@ -33,7 +33,9 @@ npm run dev
 
 ### Hosting
 
-See **[DEPLOY.md](./DEPLOY.md)** for MongoDB Atlas + Render (recommended). Pitch script: **[PITCH.md](./PITCH.md)**.
+- **Vercel (recommended):** **[VERCEL.md](./VERCEL.md)** — frontend + API on one URL  
+- **Render:** **[DEPLOY.md](./DEPLOY.md)** — MongoDB Atlas + optional monolith  
+- **Pitch script:** **[PITCH.md](./PITCH.md)**
 
 ### Project layout
 
