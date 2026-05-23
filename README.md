@@ -11,6 +11,58 @@ This MVP is a **high-fidelity functional prototype** for a hackathon demo — al
 
 ---
 
+## Quick Start (MERN Stack)
+
+This repo implements the MVP with **MongoDB**, **Express**, **React (Vite)**, and **Node.js**.
+
+### Prerequisites
+
+- Node.js 18+
+- MongoDB 6+ (optional — the server falls back to an in-memory database if MongoDB is not running)
+
+### Install & run
+
+```bash
+npm run install:all
+cp server/.env.example server/.env   # if server/.env does not exist
+npm run dev
+```
+
+- **API**: http://localhost:5000
+- **App**: http://localhost:5173
+
+### Project layout
+
+```
+terranode/
+├── client/          # React + Vite + Tailwind frontend
+├── server/          # Express + Mongoose REST API
+└── package.json     # Root scripts (dev, seed, build)
+```
+
+### API endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/api/health` | Health check |
+| GET | `/api/stats` | Platform aggregates |
+| GET | `/api/projects` | List projects (filters: `category`, `status`, `search`, `region`) |
+| GET | `/api/projects/:id` | Project detail |
+| POST | `/api/projects/:id/fund` | Micro-fund a project |
+| POST | `/api/calculator/debt` | Compute arable land debt |
+| POST | `/api/transactions/corporate` | Corporate credit purchase |
+
+### Demo flow
+
+1. Open http://localhost:5173 → landing page with live stats
+2. **Calculator** → configure GPUs → calculate debt → offset
+3. **Corporate** → pick tier → select projects → simulated payment → certificate
+4. **Projects** → filter → open Nakuru → fund $25 via M-Pesa simulation
+
+Seed data (8 Kenya restoration projects) loads automatically on first API start.
+
+---
+
 ## 2. User Review Required
 
 > [!IMPORTANT]
