@@ -1,0 +1,18 @@
+# Render Blueprint — one service (API + static frontend)
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: terranode
+    runtime: node
+    plan: free
+    buildCommand: npm run install:all && npm run build:prod
+    startCommand: npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SERVE_CLIENT
+        value: true
+      - key: MONGODB_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false

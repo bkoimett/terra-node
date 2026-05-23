@@ -2,7 +2,10 @@ import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { connectDB } from './config/db.js';
+import { corsOriginCallback } from './lib/corsOrigins.js';
 import projectRoutes from './routes/projects.js';
 import transactionRoutes from './routes/transactions.js';
 import calculatorRoutes from './routes/calculator.js';
@@ -12,12 +15,13 @@ import { seedProjects } from './data/seedProjects.js';
 
 dotenv.config();
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: corsOriginCallback,
     credentials: true,
   })
 );
@@ -32,6 +36,17 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/calculator', calculatorRoutes);
 app.use('/api/stats', statsRoutes);
+
+const clientDist = path.resolve(__dirname, '../../client/dist');
+if (process.env.SERVE_CLIENT === 'true') {
+  app.use(express.static(clientDist));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) return next();
+    res.sendFile(path.join(clientDist, 'index.html'), (err) => {
+      if (err) next();
+    });
+  });
+}
 
 async function autoSeedIfEmpty() {
   const count = await Project.countDocuments();
