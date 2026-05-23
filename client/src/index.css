@@ -2,37 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --forest: #0a120e;
+  --earth-slate: #141f1a;
+  --sage: #86efac;
+  --amber: #f59e0b;
+  --terra: #e07a5f;
+  --text: #f4f7f4;
+  --text-muted: #a8b5a8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   body {
-    @apply bg-bg-primary font-body text-text-primary antialiased;
+    @apply bg-forest font-body text-base text-canvas-text antialiased;
+    background-image: radial-gradient(
+      ellipse 120% 80% at 50% -20%,
+      rgba(134, 239, 172, 0.06),
+      transparent 50%
+    );
   }
 
   h1,
   h2,
   h3,
   h4 {
-    @apply font-heading;
+    @apply font-display font-semibold tracking-tight text-canvas-text;
+  }
+
+  ::selection {
+    background: rgba(134, 239, 172, 0.25);
+    color: #f4f7f4;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent-green px-5 py-2.5 font-semibold text-bg-primary transition hover:brightness-110;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill bg-sage px-6 py-3 text-sm font-semibold text-forest shadow-glow transition duration-300 hover:brightness-105 hover:shadow-canvas-hover active:scale-[0.98];
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-bg-secondary px-5 py-2.5 font-semibold text-text-primary transition hover:bg-bg-tertiary;
+    @apply inline-flex items-center justify-center gap-2 rounded-pill border border-white/10 bg-forest-light/80 px-6 py-3 text-sm font-semibold text-canvas-text backdrop-blur-sm transition duration-300 hover:border-sage/30 hover:bg-forest-muted active:scale-[0.98];
   }
 
   .card {
-    @apply rounded-xl border border-border bg-bg-secondary p-6 shadow-lg shadow-black/20;
+    @apply rounded-3xl border border-white/5 bg-forest-light p-6 shadow-canvas transition duration-500;
+  }
+
+  .card-hover {
+    @apply card hover:border-sage/20 hover:shadow-canvas-hover;
   }
 
   .input-field {
-    @apply w-full rounded-lg border border-border bg-bg-primary px-4 py-2.5 text-text-primary outline-none transition focus:border-accent-green focus:ring-1 focus:ring-accent-green;
+    @apply w-full rounded-2xl border border-white/10 bg-forest px-4 py-3 text-canvas-text outline-none transition duration-300 placeholder:text-canvas-subtle focus:border-sage/40 focus:ring-2 focus:ring-sage/15;
   }
 
   .label {
-    @apply mb-1.5 block text-sm font-medium text-text-secondary;
+    @apply mb-2 block text-sm font-medium text-canvas-muted;
+  }
+
+  .editorial-lead {
+    @apply font-display text-lg italic text-canvas-muted;
+  }
+
+  .grain-overlay::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }

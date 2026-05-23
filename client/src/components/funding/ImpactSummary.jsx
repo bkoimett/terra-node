@@ -9,15 +9,15 @@ export default function ImpactSummary({ sqm, region, totalContributed }) {
       animate={{ scale: 1, opacity: 1 }}
       className="card text-center"
     >
-      <Sprout className="mx-auto h-12 w-12 text-accent-green" />
-      <p className="mt-4 font-heading text-xl font-semibold">
+      <Sprout className="mx-auto h-12 w-12 text-sage" />
+      <p className="mt-4 font-display text-xl font-semibold">
         You restored {formatArea(sqm)} of land
       </p>
-      <p className="mt-2 text-text-secondary">
+      <p className="mt-2 text-canvas-muted">
         in {region}, Kenya. Every square meter counts toward verified restoration.
       </p>
       {totalContributed > 0 && (
-        <p className="mt-4 text-sm text-accent-amber">
+        <p className="mt-4 text-sm text-amber-warm">
           Your lifetime impact: {formatArea(totalContributed)} restored
         </p>
       )}

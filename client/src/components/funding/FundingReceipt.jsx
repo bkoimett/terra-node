@@ -5,8 +5,8 @@ export default function FundingReceipt({ transaction, project, onCopy }) {
   if (!transaction) return null;
 
   return (
-    <div className="card border-accent-green/30 bg-accent-green/5">
-      <div className="flex items-center gap-2 text-accent-green">
+    <div className="card-hover border-sage/20 bg-sage/5">
+      <div className="flex items-center gap-2 text-sage">
         <CheckCircle2 className="h-6 w-6" />
         <h3 className="font-heading text-lg font-semibold">Funding confirmed</h3>
       </div>

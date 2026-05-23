@@ -78,7 +78,7 @@ export default function ProjectDetail() {
           <img
             src={project.imageUrl}
             alt={project.name}
-            className="w-full rounded-xl object-cover aspect-video"
+            className="aspect-video w-full rounded-3xl object-cover shadow-canvas"
           />
           <div className="mt-4 flex flex-wrap gap-2">
             <Badge type={project.category}>
@@ -89,11 +89,11 @@ export default function ProjectDetail() {
             </Badge>
           </div>
           <h1 className="mt-4 font-heading text-3xl font-bold">{project.name}</h1>
-          <p className="mt-2 flex items-center gap-1 text-text-secondary">
+          <p className="mt-2 flex items-center gap-1 text-canvas-muted">
             <MapPin className="h-4 w-4" />
             {project.location.region}, {project.location.country}
           </p>
-          <p className="mt-4 text-text-secondary">{project.description}</p>
+          <p className="mt-4 leading-relaxed text-canvas-muted">{project.description}</p>
           <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
             <div className="card">
               <p className="text-text-secondary">Target area</p>
@@ -111,7 +111,7 @@ export default function ProjectDetail() {
             </div>
             <div className="card">
               <p className="text-text-secondary">D-MRV Score</p>
-              <p className="font-mono text-lg text-accent-green">
+              <p className="font-mono text-lg text-sage">
                 {project.verificationScore ?? '—'}/100
               </p>
             </div>

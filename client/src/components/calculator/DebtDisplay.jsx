@@ -34,13 +34,13 @@ export default function DebtDisplay({ debt, comparisons }) {
           icon={DollarSign}
         />
       </div>
-      <div className="card flex items-center gap-4 border-accent-green/30 bg-accent-green/5">
-        <Award className="h-10 w-10 shrink-0 text-accent-green" />
+      <div className="card-hover flex items-center gap-4 border-sage/20 bg-sage/5">
+        <Award className="h-10 w-10 shrink-0 text-sage" />
         <div>
-          <p className="font-heading font-semibold">
+          <p className="font-display text-lg font-semibold">
             {formatNumber(debt.creditsToPurchase)} credits needed to fully offset
           </p>
-          <p className="mt-1 text-sm text-text-secondary">
+          <p className="mt-1 text-sm text-canvas-muted">
             Each credit represents 100 m² of verified restored land at $
             {8.5}/m²
           </p>

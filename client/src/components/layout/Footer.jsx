@@ -2,31 +2,29 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border bg-bg-secondary">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+    <footer className="border-t border-white/5 bg-forest-light">
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <p className="font-heading text-lg font-semibold">TerraNode</p>
-            <p className="mt-1 max-w-md text-sm text-text-secondary">
-              Hackathon prototype — all transactions are simulated. No real payments or
-              on-chain credits.
+            <p className="font-display text-xl font-semibold">TerraNode</p>
+            <p className="editorial-lead mt-3 max-w-sm text-base">
+              Hackathon prototype — simulated transactions. Real land, imagined payments.
             </p>
           </div>
-          <div className="flex flex-wrap gap-4 text-sm text-text-secondary">
-            <Link to="/calculator" className="hover:text-accent-green">
+          <div className="flex flex-wrap gap-6 text-sm text-canvas-muted">
+            <Link to="/calculator" className="transition hover:text-sage">
               Calculator
             </Link>
-            <Link to="/projects" className="hover:text-accent-green">
+            <Link to="/projects" className="transition hover:text-sage">
               Projects
             </Link>
-            <Link to="/corporate" className="hover:text-accent-green">
+            <Link to="/corporate" className="transition hover:text-sage">
               Corporate
             </Link>
           </div>
         </div>
-        <p className="mt-8 text-xs text-text-muted">
-          © {new Date().getFullYear()} TerraNode. Tokenizing land restoration to offset AI
-          compute footprint.
+        <p className="mt-10 text-xs text-canvas-subtle">
+          © {new Date().getFullYear()} TerraNode — Regenerative Canvas
         </p>
       </div>
     </footer>

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
-import ProjectCard from '../components/projects/ProjectCard.jsx';
+import ProjectMasonry from '../components/projects/ProjectMasonry.jsx';
 import ProjectFilters from '../components/projects/ProjectFilters.jsx';
 import { useTerraNode } from '../context/TerraNodeContext.jsx';
 import { api } from '../api/client.js';
@@ -46,44 +46,46 @@ export default function Projects() {
   return (
     <PageWrapper
       title="Restoration Marketplace"
-      subtitle="Browse verified land restoration projects and fund impact directly."
+      subtitle="Browse verified land restoration — golden-hour landscapes waiting for your support."
     >
       {stats && (
-        <div className="mb-8 grid gap-4 sm:grid-cols-3">
-          <div className="card text-center">
-            <p className="text-2xl font-mono font-semibold text-accent-green">
-              {stats.projectCount}
-            </p>
-            <p className="text-sm text-text-secondary">Active projects</p>
-          </div>
-          <div className="card text-center">
-            <p className="text-2xl font-mono font-semibold text-accent-green">
-              {formatArea(totals.totalArea)}
-            </p>
-            <p className="text-sm text-text-secondary">Target restoration</p>
-          </div>
-          <div className="card text-center">
-            <p className="text-2xl font-mono font-semibold text-accent-green">
-              {formatCurrency(totals.totalRaised)}
-            </p>
-            <p className="text-sm text-text-secondary">{totals.totalBackers} backers</p>
-          </div>
+        <div className="mb-10 grid gap-5 sm:grid-cols-3">
+          {[
+            { value: stats.projectCount, label: 'Active projects' },
+            { value: formatArea(totals.totalArea), label: 'Target restoration' },
+            {
+              value: formatCurrency(totals.totalRaised),
+              label: `${totals.totalBackers} backers`,
+            },
+          ].map((item) => (
+            <div key={item.label} className="card-hover text-center">
+              <p className="font-mono text-2xl font-semibold text-sage">{item.value}</p>
+              <p className="mt-1 text-sm text-canvas-muted">{item.label}</p>
+            </div>
+          ))}
         </div>
       )}
 
       <ProjectFilters filters={filters} onChange={setFilters} />
 
-      <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {loading || ctxLoading
-          ? [1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="card h-96 animate-pulse bg-bg-tertiary" />
-            ))
-          : projects.map((p) => <ProjectCard key={p._id} project={p} />)}
+      <div className="mt-10">
+        {loading || ctxLoading ? (
+          <div className="columns-1 gap-6 sm:columns-2 xl:columns-3">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div
+                key={n}
+                className="card mb-6 h-96 animate-pulse break-inside-avoid bg-forest-muted"
+              />
+            ))}
+          </div>
+        ) : projects.length > 0 ? (
+          <ProjectMasonry projects={projects} />
+        ) : (
+          <p className="py-16 text-center text-canvas-muted">
+            No projects match your filters.
+          </p>
+        )}
       </div>
-
-      {!loading && projects.length === 0 && (
-        <p className="mt-8 text-center text-text-secondary">No projects match your filters.</p>
-      )}
     </PageWrapper>
   );
 }

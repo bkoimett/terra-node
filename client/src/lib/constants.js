@@ -7,10 +7,10 @@ export const GPU_TYPES = ['A100', 'H100', 'H200', 'B200', 'Custom'];
 export const COOLING_TYPES = ['air', 'liquid', 'hybrid'];
 
 export const CREDIT_PACKAGES = [
-  { id: 'bronze', label: 'Bronze', percent: 25, color: '#a0826d' },
-  { id: 'silver', label: 'Silver', percent: 50, color: '#94a3b8' },
-  { id: 'gold', label: 'Gold', percent: 75, color: '#fbbf24' },
-  { id: 'platinum', label: 'Platinum', percent: 100, color: '#34d399' },
+  { id: 'bronze', label: 'Bronze', percent: 25, color: '#E07A5F' },
+  { id: 'silver', label: 'Silver', percent: 50, color: '#A8B5A8' },
+  { id: 'gold', label: 'Gold', percent: 75, color: '#F59E0B' },
+  { id: 'platinum', label: 'Platinum', percent: 100, color: '#86EFAC' },
 ];
 
 export const FUND_AMOUNTS = [5, 10, 25, 50, 100];

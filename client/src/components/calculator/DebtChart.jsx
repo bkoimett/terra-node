@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from 'recharts';
 
-const COLORS = ['#34d399', '#60a5fa'];
+const COLORS = ['#86EFAC', '#E07A5F'];
 
 export default function DebtChart({ debt }) {
   if (!debt) return null;
@@ -14,18 +14,19 @@ export default function DebtChart({ debt }) {
   ];
 
   return (
-    <div className="card h-80">
-      <h3 className="mb-4 font-heading font-semibold">Debt Breakdown</h3>
-      <ResponsiveContainer width="100%" height="85%">
+    <div className="card-hover h-80">
+      <h3 className="font-display text-lg font-semibold">Debt breakdown</h3>
+      <ResponsiveContainer width="100%" height="88%" className="mt-4">
         <PieChart>
           <Pie
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={60}
-            outerRadius={90}
-            paddingAngle={4}
+            innerRadius={64}
+            outerRadius={92}
+            paddingAngle={5}
             dataKey="value"
+            stroke="none"
           >
             {data.map((_, i) => (
               <Cell key={i} fill={COLORS[i % COLORS.length]} />
@@ -34,12 +35,13 @@ export default function DebtChart({ debt }) {
           <Tooltip
             formatter={(v) => [`${Math.round(v).toLocaleString()} m²`, '']}
             contentStyle={{
-              background: '#141f1a',
-              border: '1px solid #1e3a2f',
-              borderRadius: 8,
+              background: '#141F1A',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 16,
+              fontFamily: 'DM Sans, sans-serif',
             }}
           />
-          <Legend />
+          <Legend wrapperStyle={{ fontSize: 13, color: '#A8B5A8' }} />
         </PieChart>
       </ResponsiveContainer>
     </div>

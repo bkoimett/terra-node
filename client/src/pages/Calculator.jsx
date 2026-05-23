@@ -46,7 +46,7 @@ export default function Calculator() {
       subtitle="Quantify the arable land and water footprint of your GPU infrastructure."
     >
       <div className="grid gap-8 lg:grid-cols-2">
-        <form onSubmit={handleCalculate} className="card space-y-6">
+        <form onSubmit={handleCalculate} className="card-hover space-y-6">
           <div>
             <label className="label">GPU Type</label>
             <select
@@ -108,10 +108,10 @@ export default function Calculator() {
                   key={c}
                   type="button"
                   onClick={() => setProfile({ ...profile, coolingType: c })}
-                  className={`flex-1 rounded-lg border px-3 py-2 text-sm capitalize transition ${
+                  className={`flex-1 rounded-pill border px-4 py-2.5 text-sm capitalize transition ${
                     profile.coolingType === c
-                      ? 'border-accent-green bg-accent-green/10 text-accent-green'
-                      : 'border-border hover:border-accent-green/50'
+                      ? 'border-sage/40 bg-sage/10 text-sage'
+                      : 'border-white/10 hover:border-sage/30'
                   }`}
                 >
                   {c}
@@ -136,7 +136,7 @@ export default function Calculator() {
               </Link>
             </>
           ) : (
-            <div className="card flex h-full min-h-[300px] items-center justify-center text-text-secondary">
+            <div className="card flex h-full min-h-[300px] items-center justify-center text-canvas-muted">
               Configure your cluster and calculate to see results.
             </div>
           )}

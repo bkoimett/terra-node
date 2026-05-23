@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/layout/PageWrapper.jsx';
 import DebtDisplay from '../components/calculator/DebtDisplay.jsx';
-import ProjectCard from '../components/projects/ProjectCard.jsx';
+import ProjectMasonry from '../components/projects/ProjectMasonry.jsx';
 import { useTerraNode } from '../context/TerraNodeContext.jsx';
 import { api } from '../api/client.js';
 import { CREDIT_PACKAGES } from '../lib/constants.js';
@@ -125,8 +125,8 @@ export default function Corporate() {
               key={pkg.id}
               type="button"
               onClick={() => setSelectedTier(pkg.id)}
-              className={`card text-left transition ${
-                selectedTier === pkg.id ? 'ring-2 ring-accent-green' : ''
+              className={`card-hover text-left ${
+                selectedTier === pkg.id ? 'ring-2 ring-sage/60' : ''
               }`}
             >
               <p className="font-heading font-semibold" style={{ color: pkg.color }}>
@@ -136,7 +136,7 @@ export default function Corporate() {
               <p className="mt-2 text-sm text-text-secondary">
                 {formatArea(Math.round(debt.arableLandDebt * (pkg.percent / 100)))}
               </p>
-              <p className="text-sm text-accent-green">
+              <p className="text-sm text-sage">
                 {formatCurrency(Math.round(debt.estimatedCost * (pkg.percent / 100)))}
               </p>
             </button>
@@ -146,16 +146,13 @@ export default function Corporate() {
 
       <section className="mt-10">
         <h2 className="font-heading text-xl font-semibold">Allocate to Projects</h2>
-        <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <ProjectCard
-              key={p._id}
-              project={p}
-              selectable
-              selected={selectedProjects.includes(p._id)}
-              onSelect={toggleProject}
-            />
-          ))}
+        <div className="mt-6">
+          <ProjectMasonry
+            projects={projects}
+            selectable
+            selectedIds={selectedProjects}
+            onSelect={toggleProject}
+          />
         </div>
       </section>
 

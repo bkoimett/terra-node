@@ -61,6 +61,10 @@ terranode/
 
 Seed data (8 Kenya restoration projects) loads automatically on first API start.
 
+### Design: Regenerative Canvas
+
+The UI uses the **Regenerative Canvas** theme — near-black forest backgrounds (`#0A120E`), sage green accents (`#86EFAC`), Playfair Display headings, DM Sans body, pill buttons, masonry project grids, and golden-hour imagery. Re-seed to refresh project photos: `npm run seed` (requires MongoDB).
+
 ---
 
 ## 2. User Review Required

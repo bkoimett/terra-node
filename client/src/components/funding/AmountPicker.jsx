@@ -1,7 +1,11 @@
 import { FUND_AMOUNTS, CONVERSION } from '../../lib/constants.js';
 import { formatArea } from '../../lib/formatters.js';
 
-export default function AmountPicker({ amount, onChange, costPerSqMeter = CONVERSION.CREDIT_COST_PER_SQM }) {
+export default function AmountPicker({
+  amount,
+  onChange,
+  costPerSqMeter = CONVERSION.CREDIT_COST_PER_SQM,
+}) {
   const sqm = amount / costPerSqMeter;
 
   return (
@@ -13,10 +17,10 @@ export default function AmountPicker({ amount, onChange, costPerSqMeter = CONVER
             key={preset}
             type="button"
             onClick={() => onChange(preset)}
-            className={`rounded-lg border px-4 py-2 text-sm font-medium transition ${
+            className={`rounded-pill border px-4 py-2 text-sm font-medium transition ${
               amount === preset
-                ? 'border-accent-green bg-accent-green/10 text-accent-green'
-                : 'border-border bg-bg-primary hover:border-accent-green/50'
+                ? 'border-sage/40 bg-sage/10 text-sage'
+                : 'border-white/10 bg-forest hover:border-sage/30'
             }`}
           >
             ${preset}
@@ -32,7 +36,7 @@ export default function AmountPicker({ amount, onChange, costPerSqMeter = CONVER
         onChange={(e) => onChange(Number(e.target.value) || 0)}
       />
       {amount > 0 && (
-        <p className="mt-2 text-sm text-accent-green">
+        <p className="mt-2 text-sm text-sage">
           ${amount} restores {formatArea(sqm)} of degraded land
         </p>
       )}

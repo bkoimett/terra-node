@@ -27,7 +27,7 @@ export default function MpesaSim({ onComplete, disabled }) {
   if (step === 'done') {
     return (
       <div className="card text-center">
-        <p className="text-accent-green font-semibold">Payment confirmed</p>
+        <p className="font-semibold text-sage">Payment confirmed</p>
         <p className="mt-1 text-sm text-text-secondary">M-Pesa STK push simulated</p>
       </div>
     );
@@ -57,7 +57,7 @@ export default function MpesaSim({ onComplete, disabled }) {
   if (step === 'stk' || step === 'processing') {
     return (
       <div className="card flex flex-col items-center gap-3 py-8">
-        <Loader2 className="h-8 w-8 animate-spin text-accent-green" />
+        <Loader2 className="h-8 w-8 animate-spin text-sage" />
         <p className="text-sm text-text-secondary">
           {step === 'stk' ? 'Sending STK push...' : 'Processing payment...'}
         </p>
@@ -67,7 +67,7 @@ export default function MpesaSim({ onComplete, disabled }) {
 
   return (
     <form onSubmit={handleSubmit} className="card space-y-4">
-      <div className="flex items-center gap-2 text-accent-green">
+      <div className="flex items-center gap-2 text-sage">
         <Smartphone className="h-5 w-5" />
         <span className="font-medium">M-Pesa (Simulated)</span>
       </div>

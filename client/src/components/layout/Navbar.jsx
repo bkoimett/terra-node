@@ -2,19 +2,26 @@ import { Link, NavLink } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
 
 const linkClass = ({ isActive }) =>
-  `text-sm font-medium transition ${
-    isActive ? 'text-accent-green' : 'text-text-secondary hover:text-text-primary'
+  `rounded-pill px-3 py-1.5 text-sm font-medium transition ${
+    isActive
+      ? 'bg-sage/10 text-sage'
+      : 'text-canvas-muted hover:bg-white/5 hover:text-canvas-text'
   }`;
 
 export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg-primary/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-forest/85 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2 font-heading text-xl font-bold">
-          <Leaf className="h-6 w-6 text-accent-green" />
+        <Link
+          to="/"
+          className="flex items-center gap-2.5 font-display text-xl font-semibold tracking-tight"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-2xl bg-sage/10">
+            <Leaf className="h-5 w-5 text-sage" />
+          </span>
           TerraNode
         </Link>
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-1 md:flex">
           <NavLink to="/calculator" className={linkClass}>
             Calculator
           </NavLink>
